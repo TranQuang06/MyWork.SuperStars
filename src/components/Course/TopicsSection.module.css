@@ -1,0 +1,288 @@
+/* TopicsSection.module.css */
+
+.topicsSection {
+  padding: 60px 16px;
+  background-color: #fafafa; /* chỉnh theo thiết kế */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+  text-align: left; /* hoặc center tuỳ design */
+  color: #333;
+}
+
+/* Wrapper cho carousel */
+.carouselWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Nút mũi tên */
+.arrowBtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  padding: 8px;
+  flex-shrink: 0;
+}
+.arrowBtn:hover {
+  color: #333;
+}
+
+/* Container chứa các card, sử dụng flex và overflow-x */
+.cardsContainer {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px; /* để tránh cắt nội dung */
+}
+
+/* Ẩn scrollbar nếu muốn */
+.cardsContainer::-webkit-scrollbar {
+  display: none;
+}
+.cardsContainer {
+  -ms-overflow-style: none; /* IE và Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Card styling */
+.card {
+  flex: 0 0 auto; /* không co giãn, width cố định theo nội dung CSS */
+  width: 280px; /* hoặc điều chỉnh theo thiết kế */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1), transform 0.25s cubic-bezier(.4,2,.6,1);
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(60, 36, 150, 0.15), 0 2px 8px rgba(0,0,0,0.12);
+  transform: translateY(-6px) scale(1.03);
+  z-index: 2;
+}
+
+/* Phần ảnh */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), filter 0.3s;
+}
+.card:hover .cardImage {
+  transform: scale(1.06) rotate(-1deg);
+  filter: brightness(0.97) contrast(1.08);
+}
+
+
+/* Badge giá (nếu có) */
+.priceBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+/* Nội dung card */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  margin: 0 0 8px;
+  color: #222;
+  line-height: 1.3;
+}
+
+/* Level với dot và text */
+.levelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #222;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.levelText {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Mô tả */
+.cardDesc {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+/* Learn more link */
+.learnMore {
+  align-self: flex-start;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #222;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.learnMore:hover {
+  opacity: 0.8;
+}
+
+/* Mũi tên trong link */
+.arrowIcon {
+  font-size: 1.1rem;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Điều chỉnh cho màn hình Tablet lớn (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .carouselSection {
+    padding: 40px 0;
+  }
+  .carouselWrapper {
+    padding: 0 18px; /* Giảm padding ngang */
+  }
+  .cardsContainer {
+    gap: 20px; /* Giảm khoảng cách */
+  }
+  .card {
+    width: 280px; /* Giảm chiều rộng card một chút */
+    height: 180px;
+  }
+  .arrowBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Điều chỉnh cho màn hình Tablet nhỏ / Điện thoại ngang (max-width: 768px) */
+@media (max-width: 768px) {
+  .carouselSection {
+    padding: 30px 0;
+  }
+  .carouselWrapper {
+    padding: 0 16px;
+  }
+  .cardsContainer {
+    gap: 16px; /* Giữ gap như bạn đề xuất */
+    justify-content: flex-start; /* Quan trọng: Căn trái các cards trong container cuộn */
+  }
+  .card {
+    width: 240px; /* Giữ width card như bạn đề xuất */
+    height: 160px;
+  }
+  .arrowBtn {
+    display: none; /* Ẩn mũi tên điều hướng trên mobile, dựa vào cuộn tay */
+  }
+}
+
+/* Điều chỉnh cho màn hình Điện thoại nhỏ (max-width: 480px) */
+@media (max-width: 480px) {
+  .carouselSection {
+    padding: 20px 0;
+  }
+  .carouselWrapper {
+    flex-direction: column; /* Các mũi tên và container xếp chồng */
+    gap: 15px; /* Khoảng cách giữa các phần tử xếp chồng */
+    padding: 0 12px;
+  }
+  .cardsContainer {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    justify-content: flex-start; /* Đảm bảo cards bắt đầu từ trái */
+    padding: 10px 0; /* Giữ padding */
+    gap: 12px; /* Giảm khoảng cách giữa cards */
+  }
+  .card {
+    width: 90%; /* Hoặc một % nào đó để card trông cân đối trên mobile */
+    min-width: 200px; /* Đảm bảo card không quá nhỏ */
+    max-width: 320px; /* Giới hạn max-width để không quá to trên điện thoại */
+    height: 150px;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin: 0 auto; /* Căn giữa card trong trường hợp nó không full width */
+    scroll-snap-align: center; /* Dựng card ở giữa khi cuộn */
+  }
+  /* Nếu bạn thực sự muốn carouselWrapper chuyển thành grid dọc khi quá nhỏ,
+     thay vì flex-direction: column và cuộn ngang, bạn có thể làm như sau: */
+  /*
+  .carouselWrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 0 12px;
+  }
+  .cardsContainer {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      overflow-x: hidden; // Tắt cuộn ngang
+      scroll-snap-type: none; // Tắt scroll snap
+  }
+  .card {
+      width: 100%;
+      height: auto;
+      max-width: none;
+      margin: 0;
+  }
+  */
+}
+
+/* Điều chỉnh cho màn hình điện thoại rất nhỏ (max-width: 360px) */
+@media (max-width: 360px) {
+  .carouselSection {
+    padding: 15px 0;
+  }
+  .carouselWrapper {
+    gap: 10px;
+    padding: 0 8px;
+  }
+  .cardsContainer {
+    gap: 10px;
+  }
+  .card {
+    width: 85%; /* Điều chỉnh lại % để phù hợp */
+    min-width: 180px;
+    height: 140px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+}

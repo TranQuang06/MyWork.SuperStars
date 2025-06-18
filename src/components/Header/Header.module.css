@@ -1,0 +1,421 @@
+/* Header styles */
+.header {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 8px;
+  max-width: 1400px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Header scrolled state */
+.headerScrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Adjust text color when scrolled */
+.headerScrolled .navLink {
+  color: #333;
+  text-shadow: none;
+}
+
+.headerScrolled .navLink:hover {
+  color: var(--primary-color);
+}
+
+.headerScrolled .signInBtn {
+  color: #333;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.headerScrolled .dropdownIcon {
+  color: #333;
+}
+
+/* Khi scroll xuống, bật nền đục hơn để nội dung dễ đọc */
+.headerScrolled {
+  background: rgba(255, 255, 255, 0.25); /* Sáng hơn khi scroll */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Nếu bạn muốn header sát cạnh trên, dùng top: 0 và adjust padding cho container */
+.headerTop {
+  top: 0;
+}
+
+/* CONTAINER bên trong header: flex layout */
+.headerContainer {
+  width: 100%;
+  padding: 12px 24px; /* Thay vì height cố định, dùng padding để nội dung cân đối */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px; /* Đặt chiều cao cố định cho container */
+}
+
+/* Logo */
+.logo img {
+  height: 40px; /* điều chỉnh theo đúng tỉ lệ logo */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Navigation */
+.navigationList {
+  display: flex;
+  gap: 32px; /* Khoảng cách giữa các mục */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  height: 100%; /* Đảm bảo chiều cao đầy đủ */
+}
+
+.navItem {
+  /* Chỉ dùng cho <li>, style chính apply trên .navLink */
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navLink {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Text shadow để chữ nổi bật hơn */
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Hover effect: đổi màu hoặc shadow */
+.navLink:hover {
+  color: #ffc46c; /* Màu nhấn, ví dụ vàng nhạt */
+  background: rgba(255, 255, 255, 0.1); /* Nền nhẹ khi hover */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Khi header đã scroll và nền sáng hơn, đổi màu link cho phù hợp */
+.headerScrolled .navLink {
+  color: #201514; /* Màu tối khi nền sáng */
+}
+.headerScrolled .navLink:hover {
+  color: #e74c3c;
+}
+
+/* Dropdown styles - modern version */
+.hasDropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navLinkWithDropdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.dropdownIcon {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.hasDropdown:hover .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+/* Modern dropdown menu styling */
+.navDropdown {
+  min-width: 280px;
+}
+
+.navDropdown :global(.ant-dropdown-menu) {
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navDropdown :global(.ant-dropdown-arrow) {
+  display: none; /* Hide default arrow */
+}
+
+/* Custom dropdown item */
+.customDropdownItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdownItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border-radius: 10px;
+  margin-right: 12px;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.dropdownItemContent {
+  flex: 1;
+}
+
+.dropdownItemLabel {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.dropdownItemLabel a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dropdownItemDescription {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Hover effect for dropdown items */
+.navDropdown :global(.ant-dropdown-menu-item:hover) {
+  background-color: rgba(var(--primary-color-rgb), 0.08);
+}
+
+.navDropdown :global(.ant-dropdown-menu-item:hover) .dropdownItemLabel,
+.navDropdown :global(.ant-dropdown-menu-item:hover) .dropdownItemLabel a {
+  color: var(--primary-color);
+}
+
+/* Responsive dropdown */
+@media (max-width: 768px) {
+  .navDropdown {
+    min-width: 240px;
+  }
+  
+  .dropdownItemIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .dropdownItemLabel {
+    font-size: 14px;
+  }
+  
+  .dropdownItemDescription {
+    font-size: 11px;
+  }
+}
+
+/* CTA button */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--secondary-color); /* primary color */
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cta:hover {
+  background: var(--hover-color);
+  color: #201514;
+}
+
+/* Khi header scrolled, có thể đổi style CTA nếu cần */
+/* .headerScrolled .cta { border-color: #201514; color: #201514; }
+   .headerScrolled .cta:hover { background: #201514; color: #fff; } */
+
+/* Auth Section Styles */
+.authSection {
+  display: flex;
+  align-items: center;
+  height: 100%; /* Đảm bảo phần auth cũng được căn giữa */
+}
+
+/* Sign In Button */
+.signInBtn {
+  color: #ffffff !important; /* Chữ trắng để nổi bật trên nền tối */
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  height: auto !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Border trắng mờ */
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.signInBtn:hover {
+  color: var(--primary-color) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Register Button */
+.registerBtn {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  font-weight: 600 !important;
+  padding: 8px 20px !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+.registerBtn:hover {
+  background-color: var(--primary-color) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25) !important;
+}
+
+/* User Avatar */
+.userAvatar {
+  transition: all 0.3s ease;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.userAvatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive auth section */
+@media (max-width: 768px) {
+  .authSection {
+    gap: 8px;
+  }
+  
+  .signInBtn,
+  .registerBtn {
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+  }
+  
+  .userAvatar {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* Header color schemes based on background */
+/* When header is on dark background */
+.headerOnDark .navLink {
+  color: #ffffff !important; /* White text on dark background */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.headerOnDark .navLink:hover {
+  color: #ffc46c !important; /* Yellow accent on hover */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.headerOnDark .signInBtn {
+  color: #ffffff !important; /* White text */
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.headerOnDark .signInBtn:hover {
+  color: var(--primary-color) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.headerOnDark .registerBtn {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.headerOnDark .userAvatar {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* When header is on light background */
+.headerOnLight .navLink {
+  color: #333333 !important; /* Dark text on light background */
+  text-shadow: none;
+}
+
+.headerOnLight .navLink:hover {
+  color: var(--primary-color) !important; /* Blue accent on hover */
+}
+
+.headerOnLight .signInBtn {
+  color: #333333 !important; /* Dark text */
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.headerOnLight .signInBtn:hover {
+  background-color: var(--hover-color) !important;
+}
+
+.headerOnLight .registerBtn {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #000 !important;
+}
+
+.headerOnLight .userAvatar {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Smooth transitions for color changes */
+.header .navLink,
+.header .signInBtn,
+.header .registerBtn,
+.header .userAvatar {
+  transition: all 0.3s ease !important;
+}
+
+.userName {
+  color: #ffbf0f;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}

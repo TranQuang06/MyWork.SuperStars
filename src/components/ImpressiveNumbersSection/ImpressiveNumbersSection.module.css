@@ -1,0 +1,259 @@
+.section-15 {
+  margin-bottom: 0px;
+  padding-top: 50px;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background-color: #f9f9f9;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.section-15.animate-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CSS cho các phần tử con khi animate-section */
+.section-15.animate-section .title,
+.section-15.animate-section .sub-title,
+.section-15.animate-section .number-impress {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+.section-15.animate-section .title {
+  animation-delay: 0.2s;
+}
+.section-15.animate-section .sub-title:nth-of-type(1) {
+  animation-delay: 0.4s;
+}
+.section-15.animate-section .sub-title:nth-of-type(2) {
+  animation-delay: 0.6s;
+}
+.section-15.animate-section .number-impress {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hiệu ứng cho số-item */
+.section-15.animate-section .number-item {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  animation: scaleIn 0.6s forwards;
+}
+.section-15.animate-section .number-item:nth-child(1) {
+  animation-delay: 1s;
+}
+.section-15.animate-section .number-item:nth-child(2) {
+  animation-delay: 1.2s;
+}
+.section-15.animate-section .number-item:nth-child(3) {
+  animation-delay: 1.4s;
+}
+.section-15.animate-section .number-item:nth-child(4) {
+  animation-delay: 1.6s;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Logo reveal, nếu cần dùng */
+/* .section-15.animate-section .center-logo {
+  opacity: 0;
+  transform: scale(0.5) rotate(-15deg);
+  animation: logoReveal 0.8s forwards;
+  animation-delay: 1.4s;
+}
+@keyframes logoReveal {
+  from { opacity: 0; transform: scale(0.5) rotate(-15deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+} */
+
+/* Title và subtitle */
+.section-15 .title {
+  color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 0 0 16px;
+  text-align: center;
+  width: 100%;
+}
+.section-15 .sub-title {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 23.5px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Grid layout số */
+.number-impress {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 15px;
+  position: relative;
+}
+
+.number-item {
+  position: relative;
+  padding: 30px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 180px;
+  overflow: visible;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.number-item.green-gradient {
+  background: linear-gradient(135deg, #e18c02 0%, hsl(36, 100%, 85%) 100%);
+}
+.number-item.blue-gradient {
+  background: linear-gradient(135deg, #e18c02 0%, hsl(36, 100%, 85%) 100%);
+}
+
+/* Hiệu ứng viền chạy */
+.number-item::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  border-radius: 14px;
+  z-index: -1;
+  background-size: 200% 100%;
+  background-position: -200% 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.number-item:hover::after {
+  opacity: 1;
+  animation: borderAnimate 2s linear infinite;
+}
+@keyframes borderAnimate {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.number-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath fill='%23ffffff' d='M128 96h384v256h64V80C576 53.63 554.4 32 528 32h-416C85.63 32 64 53.63 64 80V352h64V96zM624 384h-608C7.25 384 0 391.3 0 400V416c0 35.25 28.75 64 64 64h512c35.25 0 64-28.75 64-64v-16C640 391.3 632.8 384 624 384zM365.9 286.2C369.8 290.1 374.9 292 380 292s10.23-1.938 14.14-5.844l48-48c7.812-7.813 7.812-20.5 0-28.31l-48-48c-7.812-7.813-20.47-7.813-28.28 0c-7.812 7.813-7.812 20.5 0 28.31l33.86 33.84l-33.86 33.84C358 265.7 358 278.4 365.9 286.2zM274.1 161.9c-7.812-7.813-20.47-7.813-28.28 0l-48 48c-7.812 7.813-7.812 20.5 0 28.31l48 48C249.8 290.1 254.9 292 260 292s10.23-1.938 14.14-5.844c7.812-7.813 7.812-20.5 0-28.31L240.3 224l33.86-33.84C281.1 182.4 281.1 169.7 274.1 161.9z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.number {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.number-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.9);
+}
+.number-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Logo ở giữa */
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  z-index: 10;
+}
+.center-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+}
+
+/* Hover effect */
+.number-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .number-impress {
+    grid-template-columns: 1fr;
+  }
+
+  .center-logo {
+    position: relative;
+    margin: 20px auto;
+    transform: none;
+    top: auto;
+    left: auto;
+  }
+
+  .number {
+    font-size: 30px;
+  }
+
+  .number-title {
+    font-size: 16px;
+  }
+}

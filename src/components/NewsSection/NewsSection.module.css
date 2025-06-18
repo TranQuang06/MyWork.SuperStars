@@ -1,0 +1,177 @@
+/* Reset toàn cục cho section - moved to globals.css */
+
+.section {
+  /* padding: 60px 20px; */
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.title {
+  font-size: 120px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 32px;
+  color: #000;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-top: 50px;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Grid layout - loại bỏ height cố định */
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  max-width: 100%;
+}
+
+/* Card chung - loại bỏ height cố định */
+.mainCard,
+.sideCard {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  min-height: 250px;
+  max-width: 100%;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Card bên trái */
+.mainCard {
+  height: 100%;
+}
+
+.mainCardTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.mainCardDesc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Container bên phải - loại bỏ height cố định */
+.sideContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card bên phải */
+.sideCard {
+  height: auto;
+  min-height: 250px;}
+
+.sideCardTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #fff;
+}
+
+/* Tag categories */
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.economy {
+  background-color: #ff3b3b;
+}
+
+.style {
+  background-color: #3b82f6;
+}
+
+.art {
+  background-color: #10b981;
+}
+
+/* Card content */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* padding: 20px; */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 2;
+}
+
+/* Links */
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 80px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 60px;
+  }
+}
+/* loading text */
+.loading {
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 50px;
+  color: #666;
+}
+/* 
+/* hiệu ứng xuất hiện */
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #ff3b3b;
+} 
